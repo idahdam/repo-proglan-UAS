@@ -64,6 +64,13 @@ void drawBorder(){
 	   gotoCoord(MAIN_BORDER_RIGHT,i);
 	   printf("%c", 221);
 	}
+	
+	SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN) ;
+	gotoCoord(food.posX, food.posY);
+	printf("%c", 221);
+	
+	gotoCoord(MAIN_BORDER_LEFT, MAIN_BORDER_TOP-1);
+	printf("Score is : %d", foodCounter-1);
 }
 
 void startFunction(){
@@ -74,8 +81,11 @@ void setStart(){
 //	snakeHead.direction = RIGHT;
 	lengthSnake = 15;
 	parts = 0;
+	foodCounter = 0;
 	snakeHead.posX = 20;
 	snakeHead.posY = 20;
+	food.posX = 20;
+	food.posY = 20;
 }
 
 void pauseEachMove(int value1, int value2){
@@ -100,11 +110,13 @@ void moveSnake(){
         }
         //system("cls");
         drawBorder();
+        spawnFood();
          
         if(snakeHead.direction == RIGHT) moveSnakeRight();
         if(snakeHead.direction == LEFT) moveSnakeLeft();
         if(snakeHead.direction == UP) moveSnakeUp();
         if(snakeHead.direction == DOWN) moveSnakeDown();
+        checkCollision();
         pauseEachMove(3500000, 3000000);
 			 
 	} while(!kbhit());
@@ -347,3 +359,27 @@ void ableToTurn(){
     }
 }
 
+void checkCollision(){
+	int i;
+	for(i = 3; i<=lengthSnake; i++){
+		if(snakeHead.posX == snakeBody[i].posX && snakeHead.posY == snakeBody[i].posY){
+			pauseEachMove(100000000, 100000000);
+			exit(0);
+		}
+	}
+}
+
+void spawnFood(){
+	srand(time(NULL));
+	int a, b, i, j;
+	if(snakeHead.posX == food.posX && snakeHead.posY == food.posY){
+		for(i = 0; i<1+rand()%10; i++){
+			food.posX = MAIN_BORDER_LEFT+1+rand()%(MAIN_BORDER_RIGHT-MAIN_BORDER_LEFT-1);
+		}
+		for(i = 0; i<1+rand()%10; i++){
+			food.posY = MAIN_BORDER_TOP+1+rand()%(MAIN_BORDER_BOTTOM-MAIN_BORDER_TOP-1);
+		}
+		foodCounter++;
+		lengthSnake+=2;
+	}	
+}
