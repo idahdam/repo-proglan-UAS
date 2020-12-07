@@ -12,8 +12,14 @@
 #define LEFT 75     //             LEFT
 #define RIGHT 77    //             right
 
+#define MAIN_BORDER_LEFT 10
+#define MAIN_BORDER_RIGHT 70
+#define MAIN_BORDER_TOP 5
+#define MAIN_BORDER_BOTTOM 25
+
 COORD setCoord={};
-void gotoCoord(int x , int y){
+
+void gotoCoord(int x, int y){
     setCoord.X=x;
     setCoord.Y=y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),setCoord);
@@ -39,13 +45,34 @@ int main(){
 	startFunction();
 }
 
+void drawBorder(){
+	int i;
+	system("cls");
+	HANDLE h = GetStdHandle( STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, FOREGROUND_GREEN) ;
+	for(i=MAIN_BORDER_LEFT;i<=MAIN_BORDER_RIGHT;i++){
+	   gotoCoord(i, MAIN_BORDER_TOP);
+	   printf("%c", 221);
+	
+	   gotoCoord(i, MAIN_BORDER_BOTTOM);
+	   printf("%c", 221);
+	
+	}	
+	for(i=MAIN_BORDER_TOP;i<=MAIN_BORDER_BOTTOM;i++){
+	   gotoCoord(MAIN_BORDER_LEFT,i);
+		printf("%c", 221);
+	   gotoCoord(MAIN_BORDER_RIGHT,i);
+	   printf("%c", 221);
+	}
+}
+
 void startFunction(){
 	setStart(),	moveSnake();
 }
 
 void setStart(){
 //	snakeHead.direction = RIGHT;
-	lengthSnake = 10;
+	lengthSnake = 15;
 	parts = 0;
 	snakeHead.posX = 20;
 	snakeHead.posY = 20;
@@ -71,7 +98,8 @@ void moveSnake(){
 	
 	        if(i==lengthSnake) break;
         }
-        system("cls");
+        //system("cls");
+        drawBorder();
          
         if(snakeHead.direction == RIGHT) moveSnakeRight();
         if(snakeHead.direction == LEFT) moveSnakeLeft();
@@ -100,12 +128,18 @@ void moveSnake(){
             snakeHead.posX--;
         }
     }
+    
 	moveSnake();
 }
 
 void moveSnakeRight(){
 	int i, j;
 	for(i = 0; i <= snakeHead.posX - turn[parts].posX && lengthStart < lengthSnake; i++){
+		if(snakeHead.posX>=MAIN_BORDER_RIGHT){
+			system("cls");
+			printf("MAIN");
+			break;
+        }
 		snakeBody[lengthStart].posX= a =snakeHead.posX-i;
         snakeBody[lengthStart].posY= b =snakeHead.posY;
         gotoCoord(a,b);
@@ -116,14 +150,23 @@ void moveSnakeRight(){
             printf("%c", 254);
         lengthStart++;
     }
+    
     ableToTurn();
-    if(!kbhit())
-    snakeHead.posX++;
+    
+    if(!kbhit()){
+    	snakeHead.posX++;
+	}
+
 }
 
 void moveSnakeLeft(){
 	int i, j;
 	for(i = 0; i <= turn[parts].posX - snakeHead.posX && lengthStart < lengthSnake; i++){
+		if(snakeHead.posX <= MAIN_BORDER_LEFT){
+			system("cls");
+			printf("bye");
+			break;
+		}
 		snakeBody[lengthStart].posX= a =snakeHead.posX+i;
         snakeBody[lengthStart].posY= b =snakeHead.posY;
         gotoCoord(a,b);
@@ -143,6 +186,11 @@ void moveSnakeLeft(){
 void moveSnakeUp(){
 	int i, j;
 	for(i = 0; i <= turn[parts].posY - snakeHead.posY  && lengthStart < lengthSnake; i++){
+		if(snakeHead.posY <= MAIN_BORDER_TOP){
+			system("cls");
+			printf("bye");
+			break;
+		}
 		snakeBody[lengthStart].posX= a =snakeHead.posX;
         snakeBody[lengthStart].posY= b =snakeHead.posY+i;
         gotoCoord(a,b);
@@ -162,6 +210,11 @@ void moveSnakeUp(){
 void moveSnakeDown(){
 	int i, j;
 	for(i = 0; i <= snakeHead.posY - turn[parts].posY && lengthStart < lengthSnake; i++){
+		if(snakeHead.posY >= MAIN_BORDER_BOTTOM){
+			system("cls");
+			printf("bye");
+			break;
+		}
 		snakeBody[lengthStart].posX= a =snakeHead.posX;
         snakeBody[lengthStart].posY= b =snakeHead.posY-i;
         gotoCoord(a,b);
@@ -241,55 +294,56 @@ void ableToTurn(){
         }
         else if (turn[i].posY==turn[i-1].posY)
         {
-              check=turn[i].posX-turn[i-1].posX;
-              // moving right
-			  if(check>0){
-                  for(j=0;j<=check&&lengthStart<lengthSnake;j++){
-				  	snakeBody[lengthStart].posY=b=turn[i].posY;
-                    snakeBody[lengthStart].posX=a=turn[i].posX-j;
-                	gotoCoord(a,b);
-                    if(turn[i].direction==UP&&c==1){
-
-                      printf("%c",254);
-                      c++;
-                     }
-                      
-                    else if(turn[i].direction==DOWN&&c==1){
-
-                        printf("%c",254);
-                        c++;
-                    }
-                    else{
-                    	printf("%c",254);
-					}                       
-                      lengthStart++;
-                  }
-
-              }
-              else
-                for(j=0;j<=-check&&lengthStart<lengthSnake;j++)
-                  {
-
-                      snakeBody[lengthStart].posY=b=turn[i].posY;
-                      snakeBody[lengthStart].posX=a=turn[i].posX+j;
-                      gotoCoord(a,b);
-                      if(turn[i].direction==UP&&c==1){
-
-                      printf("%c",254);
-                      c++;
-                      }
-                      else if(turn[i].direction==DOWN&& c == 1){
-
-                        printf("%c",254);
-                        c++;
-                      }
-                      else {
-                      	printf("%c",254);
-					  }
-
-                      lengthStart++;
-                  }
+			check=turn[i].posX-turn[i-1].posX;
+			// moving right
+			if(check>0){
+			for(j=0;j<=check&&lengthStart<lengthSnake;j++){
+			  	snakeBody[lengthStart].posY=b=turn[i].posY;
+	            snakeBody[lengthStart].posX=a=turn[i].posX-j;
+	        	gotoCoord(a,b);
+	            if(turn[i].direction==UP&&c==1){
+	
+	              printf("%c",254);
+	              c++;
+	             }
+	              
+	            else if(turn[i].direction==DOWN&&c==1){
+	
+	                printf("%c",254);
+	                c++;
+	            }
+	            else{
+	            	printf("%c",254);
+				}                       
+	              lengthStart++;
+	          }
+	
+	      }
+	      //moving left
+	      else
+	        for(j=0;j<=-check&&lengthStart<lengthSnake;j++){
+	
+				snakeBody[lengthStart].posY=b=turn[i].posY;
+				snakeBody[lengthStart].posX=a=turn[i].posX+j;
+				gotoCoord(a,b);
+				if(turn[i].direction==UP&&c==1){
+				
+				printf("%c",254);
+				c++;
+				}
+				else if(turn[i].direction==DOWN&& c == 1){
+				
+				printf("%c",254);
+				c++;
+				}
+				else {
+				printf("%c",254);
+				}
+				
+				lengthStart++;
+	        }
         }
 
     }
 }
+
