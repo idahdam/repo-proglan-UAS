@@ -12,6 +12,7 @@
 void background(){
     system("color 68");
 }
+
 COORD setCoord={};
 void gotoxy(int x , int y){
     setCoord.X=x;
@@ -62,24 +63,24 @@ void menu(){
 
     while(kpress !=13){
     system("cls");
+    printf("===================================================\n");
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("===================================================\n");
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
+    printf("%c                                                 %c\n",186,186);
     printf("===================================================");
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
     gotoxy(18,1);
     printf("Snake Game");
     gotoxy(18,2);
     printf("by hadi & jo\n");
-    printf("===================================================");
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("%c                                                 %c\n",186,186);
-    printf("===================================================");
     gotoxy(15,5);
     arrow(1,pos);printf("PLAY\n");
     gotoxy(15,7);
@@ -88,7 +89,6 @@ void menu(){
     arrow(3,pos);printf("high score\n");
     gotoxy(15,11);
     arrow(4,pos);printf("EXIT\n");
-        
     kpress = getch();
 
     if (kpress== 80 && pos != max){
