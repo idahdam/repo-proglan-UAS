@@ -79,6 +79,7 @@ void menu(){
     printf("%c                                                 %c\n",186,186);
     printf("%c                                                 %c\n",186,186);
     printf("%c                                                 %c\n",186,186);
+    printf("===================================================");
     gotoxy(15,5);
     arrow(1,pos);printf("PLAY\n");
     gotoxy(15,7);
@@ -87,7 +88,7 @@ void menu(){
     arrow(3,pos);printf("high score\n");
     gotoxy(15,11);
     arrow(4,pos);printf("EXIT\n");
-    printf("===================================================");
+        
     kpress = getch();
 
     if (kpress== 80 && pos != max){
