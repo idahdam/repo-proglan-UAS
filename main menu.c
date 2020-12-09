@@ -38,7 +38,7 @@ void loading(){
     gotoxy(10,5);
     printf("loading game please wait\n");
     gotoxy(10,7);
-    for(r=1;r<=23;r++){
+    for(r=1;r<=24;r++){
         for(q=0;q<=50000000;q++);//to display the character slowly
             printf("%c",221);
             }
