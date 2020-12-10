@@ -34,3 +34,11 @@ a:link{
 .section-left{
     text-align: left;
 }
+
+pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 0.5em 0;
+    background-color: burlywood;
+}
