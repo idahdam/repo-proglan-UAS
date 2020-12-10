@@ -1,0 +1,14 @@
+*{
+    background-color: blanchedalmond;
+}
+
+p {
+    font-size: 1.25rem;
+    color: black;
+}
+
+.hyperlink{
+    text-align: center;
+    font-size: 2rem;
+    text-indent: 1.25em;
+}
