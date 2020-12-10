@@ -1,5 +1,6 @@
 *{
     background-color: blanchedalmond;
+    font-size: 1.25rem;
 }
 
 p {
@@ -11,4 +12,25 @@ p {
     text-align: center;
     font-size: 2rem;
     text-indent: 1.25em;
+    tab-size: 4;
+    display: inline-block;
+    margin-left: 40px;
+
+
+}
+
+a:hover{
+    color: black;
+}
+
+a:link{
+    color: blue;
+}
+
+.section-right{
+    text-align: right;
+}
+
+.section-left{
+    text-align: left;
 }
