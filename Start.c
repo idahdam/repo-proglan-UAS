@@ -93,6 +93,7 @@ void pauseEachMove(int value1, int value2){
 void moveSnake(){
 	int i, k;
 	char keyPress;
+	background();
 	do{
 		fflush(stdin);
         lengthStart=0;
@@ -386,6 +387,11 @@ void spawnFood(){
 		}
 		for(i = 0; i<1+rand()%10; i++){
 			food.posY = MAIN_BORDER_TOP+1+rand()%(MAIN_BORDER_BOTTOM-MAIN_BORDER_TOP-1);
+		}
+		for(i = 0; i<lengthSnake; i++){
+			if(food.posX == snakeBody[i].posX && food.posY == snakeBody[i].posY){
+				spawnFood();
+			}
 		}
 		
 		foodCounter++;
