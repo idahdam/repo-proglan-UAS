@@ -1,16 +1,12 @@
 #include "Header.h"
 
-struct Score{
-	char inisial[3];
-	int data;
-	int key;
-	struct Score *next;
-};
+struct node{
+	char* data;
+	struct node *next;
+}typedef node;
 
-struct Score *head = NULL;
-struct Score *current = NULL;
-
-int number;
+node *head = NULL, *tmp = NULL, *itr = NULL;
+int number, i, line = 0;
 
 
 void printLose(){
@@ -229,18 +225,63 @@ void showScore(){
     	printf("\t\t\t\t\tScoreBoard\t\t\n\n");
     	printf("\t\t\t========================================\n");
     	printf("\t\t\t--Best\t Name \t Score--\n\n");
-	}
-	printf("\t\t\t========================================\n");
-    while (fgets(str, MAXCHAR, fp) != NULL){
-		printf("\t\t\t--%d \t %s\n", number,  str);
-        number++;
-        if(number == 11){
-        	break;
+		printf("\t\t\t========================================\n");
+		
+		line = checkLine();
+		
+		for(number = 1; number<=line; number++){
+			
+			fgets(str, MAXCHAR, fp);
+				
+			tmp = malloc(sizeof(struct node)); //kapling baru lagi
+			(*tmp).data = str;
+			(*tmp).next = NULL;
+			
+			if(number == 1){
+				
+				head = tmp;	
+				printf("\t\t\t--%d \t %s\n", number, head->data);
+							
+			}
+			
+			else{
+				
+				itr = head;
+				
+				while(1){
+					if((*itr).next == NULL){
+						(*itr).next = tmp;
+						break;
+					}
+					else{
+						itr = (*itr).next;
+					}
+				}
+				
+				printf("\t\t\t--%d \t %s\n", number, tmp->data);
+			}			
 		}
+	
+		number = 1;
 	}
+
 
     fclose(fp);
     printf("\n\n\t\t\tEnter to go to main.");
     getch();
     menu();
+}
+
+int checkLine(){
+		FILE* fp = fopen("leaderboard_out.txt", "r");
+		char str[MAXCHAR];
+		while (fgets(str, MAXCHAR, fp) != NULL){
+//			printf("\t\t\t--%d \t %s\n", number,  str);
+	        line++;
+	        if(line == 11){
+	        	break;
+			}
+		}
+		
+		return line;
 }
