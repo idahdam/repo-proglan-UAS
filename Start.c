@@ -378,7 +378,7 @@ void checkCollision(){
 			//system("cls");
 			// insert lose here and enter the thing
 			printLose();
-			enterScore(foodCounter);
+			enterScore(foodCounter-1);
         	menu();
         	
 		}
