@@ -141,56 +141,78 @@ void printLose(){
     }
 }
 
-//
-//void sort(){
-//
-//   int i, j, k, tempKey, tempData;
-//   struct Score *current;
-//   struct Score *next;
-//	
-//   int size = length();
-//   k = size ;
-//	
-//   for ( i = 0 ; i < size - 1 ; i++, k-- ) {
-//      current = head;
-//      next = head->next;
-//		
-//      for ( j = 1 ; j < k ; j++ ) {   
-//
-//         if ( current->data > next->data ) {
-//            tempData = current->data;
-//            current->data = next->data;
-//            next->data = tempData;
-//
-//            tempKey = current->key;
-//            current->key = next->key;
-//            next->key = tempKey;
-//         }
-//			
-//         current = current->next;
-//         next = next->next;
-//      }
-//   }   
-//}
+void sort(){
+    char *strFileName = "leaderboard.txt";
+    char *strFileSummary = "leaderboard_out.txt";
+    char strTempData[MAX_LEN];
+    char **strData = NULL; // String List
+    int i, j;
+    int noOfLines = 0;
+
+    FILE * ptrFileLog = NULL;
+    FILE * ptrSummary = NULL;
+
+    if ( (ptrFileLog = fopen(strFileName, "r")) == NULL ) {
+        fprintf(stderr,"Error: Could not open %s\n", strFileName);
+        
+    }
+    if ( (ptrSummary = fopen(strFileSummary, "w")) == NULL ) {
+        fprintf(stderr,"Error: Could not open %s\n", strFileSummary);
+    }
+
+    // Read and store in a string list.
+    while(fgets(strTempData, MAX_LEN, ptrFileLog) != NULL) {
+        // Remove the trailing newline character
+        if(strchr(strTempData,'\n'))
+            strTempData[strlen(strTempData)-1] = '\0';
+        strData = (char**)realloc(strData, sizeof(char**)*(noOfLines+1));
+        strData[noOfLines] = (char*)calloc(MAX_LEN,sizeof(char));
+        strcpy(strData[noOfLines], strTempData);
+        noOfLines++;
+    }
+    // Sort the array.
+    for(i= 0; i < (noOfLines - 1); ++i) {
+        for(j = 0; j < ( noOfLines - i - 1); ++j) {
+            if(strcmp(strData[j], strData[j+1]) < 0) {
+                strcpy(strTempData, strData[j]);
+                strcpy(strData[j], strData[j+1]);
+                strcpy(strData[j+1], strTempData);
+            }
+        }
+    }
+    // Write it to outfile. file.
+    for(i = 0; i < noOfLines; i++)
+        fprintf(ptrSummary,"%s\n",strData[i]);
+    // free each string
+    for(i = 0; i < noOfLines; i++)
+        free(strData[i]);
+    // free string list.
+    free(strData);
+    fclose(ptrFileLog);
+    fclose(ptrSummary);
+}
 
 void enterScore(int score){
-    FILE *fp;
+    FILE *fp, *fp2;
     char nama[3];
     system("cls");
     system("COLOR 8f");
     fp = fopen("leaderboard.txt", "a");
+    fp2 = fopen("leaderboard_out.txt", "a");
     printf("\t\t\t");
     printf("=====================================================\n");
     printf("\n\t\t\tMasukkan 3 huruf inisialmu: ");
-    scanf("%s", &nama);
- 	fprintf(fp, "%s \t %d", nama, score);
+    scanf("%3s", &nama);
+ 	fprintf(fp, "%d \t %s\n", score, nama);
 	fclose(fp);
+	fclose(fp2);
 }
 
 void showScore(){
     FILE *fp;
     char str[MAXCHAR];
-    char filename[] = "leaderboard.txt";
+    sort();
+    char filename[] = "leaderboard_out.txt";
     system("cls");
 	number = 1;
     fp = fopen(filename, "r");
@@ -210,7 +232,7 @@ void showScore(){
 	}
 	printf("\t\t\t========================================\n");
     while (fgets(str, MAXCHAR, fp) != NULL){
-		printf("\t\t\t--%d \t %s", number,  str);
+		printf("\t\t\t--%d \t %s\n", number,  str);
         number++;
         if(number == 11){
         	break;

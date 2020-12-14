@@ -29,6 +29,8 @@
 	#define MAIN_BORDER_TOP 10
 	#define MAIN_BORDER_BOTTOM 30
 	
+	#define MAX_LEN 100
+	
 	// functions in Welcome.c
 	
 	void mainFunction();
