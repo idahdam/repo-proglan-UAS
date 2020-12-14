@@ -364,18 +364,25 @@ void checkCollision(){
 		if(snakeHead.posX == snakeBody[i].posX && snakeHead.posY == snakeBody[i].posY){
 			pauseEachMove(100000000, 100000000);
 //			exit(0);
+			printLose();
+			enterScore(foodCounter);
 			menu();
+			
 		}
 	}
-//	for(i = 0; i<=lengthSnake; i++){
-//		if(snakeHead.posX == MAIN_BORDER_RIGHT || snakeHead.posX == MAIN_BORDER_LEFT || snakeHead.posY == MAIN_BORDER_TOP || snakeHead.posY == MAIN_BORDER_BOTTOM){
-//			pauseEachMove(100000000, 100000000);
-//			//break;
-//			//system("cls");
-//			// insert lose here and enter the thing
-//        	menu();
-//		}
-//	}
+	
+	for(i = 0; i<=lengthSnake; i++){
+		if(snakeHead.posX == MAIN_BORDER_RIGHT || snakeHead.posX == MAIN_BORDER_LEFT || snakeHead.posY == MAIN_BORDER_TOP || snakeHead.posY == MAIN_BORDER_BOTTOM){
+			pauseEachMove(100000000, 100000000);
+			//break;
+			//system("cls");
+			// insert lose here and enter the thing
+			printLose();
+			enterScore(foodCounter);
+        	menu();
+        	
+		}
+	}
 }
 
 void spawnFood(){

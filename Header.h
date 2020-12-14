@@ -56,6 +56,7 @@
 	
 	// functions in Leaderboard.c
 	
+	void printLose();
 	void enterScore(int score);
 	void showScore();
 	

@@ -98,7 +98,8 @@ void menu(){
         system("cls");
 //        printf("play selecet");
 		startFunction();
-        break;
+		printLose();
+        //break;
     case 2:
         system("cls");
         printf("how to play selected");
