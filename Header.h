@@ -63,6 +63,7 @@
 	void showScore();
 	void reArrange();
 	void deleteLinkedList();
+	int checkLine();
 	
 
 #endif

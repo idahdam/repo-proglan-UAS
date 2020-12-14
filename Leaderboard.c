@@ -201,16 +201,15 @@ void enterScore(int score){
     printf("\n\t\t\tMasukkan 3 huruf inisialmu: ");
     scanf("%3s", &nama);
  	fprintf(fp, "%d \t %s\n", score, nama);
- 	showScore();
 	fclose(fp);
 	fclose(fp2);
 	toggle = 1;
 }
 
 void showScore(){
+	sort();
     FILE *fp;
     char str[MAXCHAR];
-    sort();
     char filename[] = "leaderboard_out.txt";
     system("cls");
 	number = 1;
@@ -223,6 +222,7 @@ void showScore(){
     	printf("\t\t\t========================================\n");
         printf("\t\t\tScoreboard is empty.\n");
     }
+    
     else{
     	printf("\t\t\t========================================\n");
     	printf("\t\t\t\t\tScoreBoard\t\t\n\n");
@@ -231,7 +231,7 @@ void showScore(){
 		printf("\t\t\t========================================\n");
 		
 		line = checkLine();
-
+		printf("%d", line);
 		
 		for(number = 1; number<=line; number++){
 			
@@ -248,11 +248,10 @@ void showScore(){
 							
 			}
 			
-			else{
+			else if(number <= line){
 				
 				itr = head;
 				
-				if(toggle == 0){
 					while(1){
 						if((*itr).next == NULL){
 							(*itr).next = tmp;
@@ -261,51 +260,32 @@ void showScore(){
 						else{
 							itr = (*itr).next;
 						}
-					}
-				}
-
+					}		
+							
+				printf("\t\t\t--%d \t %s\n", number, itr->data);
 				
-				printf("\t\t\t--%d \t %s\n", number, tmp->data);
 			}			
 		}
-	
-		number = 1;
 	}
 
 
     fclose(fp);
 	printf("\n\n\t\t\tEnter to go to main.");
+	line == 0;
     getch();
     menu();
 }
 
 int checkLine(){
+ 		int trueLine = 0;
 		FILE* fp = fopen("leaderboard_out.txt", "r");
 		char str[MAXCHAR];
 		while (fgets(str, MAXCHAR, fp) != NULL){
-//			printf("\t\t\t--%d \t %s\n", number,  str);
-	        line++;
+	        trueLine++;
 	        if(line == 11){
 	        	break;
 			}
 		}
 		
-		return line;
-}
-
-void deleteLinkedList(){
-	itr = head;
-	for(number = 1; number<=line; number++){
-		while(1){
-
-			if((*itr).next == NULL){ //iteratorPtr merujuk ke node paling akhir
-				free(itr);
-				(*prev).next = NULL;
-				break;
-			}else{
-				prev = itr; //alamat yg barusan dicek
-				itr = (*itr).next; //alamat yg dicek berikutnya
-			}
-		}
-	}
+		return trueLine;
 }
