@@ -61,6 +61,8 @@
 	void printLose();
 	void enterScore(int score);
 	void showScore();
+	void reArrange();
+	void deleteLinkedList();
 	
 
 #endif

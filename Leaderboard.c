@@ -5,8 +5,8 @@ struct node{
 	struct node *next;
 }typedef node;
 
-node *head = NULL, *tmp = NULL, *itr = NULL;
-int number, i, line = 0;
+node *head = NULL, *tmp = NULL, *itr = NULL, *prev = NULL;
+int number, i, line = 0, toggle = 1;
 
 
 void printLose(){
@@ -189,6 +189,7 @@ void sort(){
 }
 
 void enterScore(int score){
+	toggle = 0;
     FILE *fp, *fp2;
     char nama[3];
     system("cls");
@@ -200,8 +201,10 @@ void enterScore(int score){
     printf("\n\t\t\tMasukkan 3 huruf inisialmu: ");
     scanf("%3s", &nama);
  	fprintf(fp, "%d \t %s\n", score, nama);
+ 	showScore();
 	fclose(fp);
 	fclose(fp2);
+	toggle = 1;
 }
 
 void showScore(){
@@ -228,6 +231,7 @@ void showScore(){
 		printf("\t\t\t========================================\n");
 		
 		line = checkLine();
+
 		
 		for(number = 1; number<=line; number++){
 			
@@ -248,15 +252,18 @@ void showScore(){
 				
 				itr = head;
 				
-				while(1){
-					if((*itr).next == NULL){
-						(*itr).next = tmp;
-						break;
-					}
-					else{
-						itr = (*itr).next;
+				if(toggle == 0){
+					while(1){
+						if((*itr).next == NULL){
+							(*itr).next = tmp;
+							break;
+						}
+						else{
+							itr = (*itr).next;
+						}
 					}
 				}
+
 				
 				printf("\t\t\t--%d \t %s\n", number, tmp->data);
 			}			
@@ -267,7 +274,7 @@ void showScore(){
 
 
     fclose(fp);
-    printf("\n\n\t\t\tEnter to go to main.");
+	printf("\n\n\t\t\tEnter to go to main.");
     getch();
     menu();
 }
@@ -284,4 +291,21 @@ int checkLine(){
 		}
 		
 		return line;
+}
+
+void deleteLinkedList(){
+	itr = head;
+	for(number = 1; number<=line; number++){
+		while(1){
+
+			if((*itr).next == NULL){ //iteratorPtr merujuk ke node paling akhir
+				free(itr);
+				(*prev).next = NULL;
+				break;
+			}else{
+				prev = itr; //alamat yg barusan dicek
+				itr = (*itr).next; //alamat yg dicek berikutnya
+			}
+		}
+	}
 }
