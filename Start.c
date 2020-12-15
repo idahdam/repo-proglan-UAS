@@ -28,7 +28,7 @@ void drawBorder(int state){
 	int i;
 	system("cls");
 	HANDLE h = GetStdHandle( STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, FOREGROUND_GREEN) ;
+	//SetConsoleTextAttribute(h, FOREGROUND_GREEN) ;
 	for(i=MAIN_BORDER_LEFT;i<=MAIN_BORDER_RIGHT;i++){
 	   gotoCoord(i, MAIN_BORDER_TOP);
 	   printf("%c", 221);
@@ -44,7 +44,7 @@ void drawBorder(int state){
 	   printf("%c", 221);
 	}
 	
-	SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN) ;
+	//SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN) ;
 	gotoCoord(food.posX, food.posY);
 	printf("%c", 221);
 	

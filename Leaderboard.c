@@ -231,7 +231,6 @@ void showScore(){
 		printf("\t\t\t========================================\n");
 		
 		line = checkLine();
-		printf("%d", line);
 		
 		for(number = 1; number<=line; number++){
 			
