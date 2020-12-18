@@ -239,9 +239,9 @@ void showScore(){
     	printf("\t\t\t--Best\t Name \t Score--\n\n");
 		printf("\t\t\t========================================\n");
 		
-		line = checkLine();
+//		line = checkLine();
 		
-		for(number = 1; number<=line; number++){
+		for(number = 1; number<=10; number++){
 			
 			fgets(str, MAXCHAR, fp);
 				
@@ -256,7 +256,7 @@ void showScore(){
 							
 			}
 			
-			else if(number <= line){
+			else if(number <= 10){
 				
 				itr = head;
 				
@@ -284,16 +284,16 @@ void showScore(){
     menu();
 }
 
-int checkLine(){
- 		int trueLine = 0;
-		FILE* fp = fopen("leaderboard_out.txt", "r");
-		char str[MAXCHAR];
-		while (fgets(str, MAXCHAR, fp) != NULL){
-	        trueLine++;
-	        if(line == 11){
-	        	break;
-			}
-		}
-		
-		return trueLine;
-}
+//int checkLine(){
+// 		int trueLine = 0;
+//		FILE* fp = fopen("leaderboard_out.txt", "r");
+//		char str[MAXCHAR];
+//		while (fgets(str, MAXCHAR, fp) != NULL){
+//	        trueLine++;
+//	        if(line == 11){
+//	        	break;
+//			}
+//		}
+//		
+//		return trueLine;
+//}
