@@ -160,22 +160,27 @@ void sort(){
     while(fgets(strTempData, MAX_LEN, ptrFileLog) != NULL) {
         // Remove the trailing newline character
         if(strchr(strTempData,'\n'))
-            strTempData[strlen(strTempData)-1] = '\0';
+        strTempData[strlen(strTempData)-1] = '\0';
         strData = (char**)realloc(strData, sizeof(char**)*(noOfLines+1));
         strData[noOfLines] = (char*)calloc(MAX_LEN,sizeof(char));
         strcpy(strData[noOfLines], strTempData);
+        printf("%s", strData[noOfLines]);
         noOfLines++;
     }
+    
     // Sort the array.
     for(i= 0; i < (noOfLines - 1); ++i) {
         for(j = 0; j < ( noOfLines - i - 1); ++j) {
-            if(strcmp(strData[j], strData[j+1]) < 0) {
+//            if(strncmp(strData[j], strData[j+1], 5) < 0) {
+		      if(atoi(strData[j]) < atoi(strData[j+1])){
+//			  if(strData[j] < strData[j+1]){
                 strcpy(strTempData, strData[j]);
                 strcpy(strData[j], strData[j+1]);
                 strcpy(strData[j+1], strTempData);
             }
         }
     }
+    
     // Write it to outfile. file.
     for(i = 0; i < noOfLines; i++)
         fprintf(ptrSummary,"%s\n",strData[i]);
@@ -189,6 +194,7 @@ void sort(){
 }
 
 void enterScore(int score){
+	int zero = 0;
 	toggle = 0;
     FILE *fp, *fp2;
     char nama[3];
@@ -200,7 +206,10 @@ void enterScore(int score){
     printf("=====================================================\n");
     printf("\n\t\t\tMasukkan 3 huruf inisialmu: ");
     scanf("%3s", &nama);
- 	fprintf(fp, "%d \t %s\n", score, nama);
+
+    fprintf(fp, "%d \t %s\n", score, nama);
+
+ 		
 	fclose(fp);
 	fclose(fp2);
 	toggle = 1;
