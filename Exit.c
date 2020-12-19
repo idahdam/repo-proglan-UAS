@@ -1,5 +1,6 @@
 #include "Header.h"
 
+/*Ask user to exit or go back*/
 void areYouSure(){
     int pos = 1;
     int kpress = 0;
@@ -9,7 +10,6 @@ void areYouSure(){
     system("cls");
     background();
     
-    // display title
 	int p=1;
 	int q = 12;
 	gotoxy(q,p);printf("     _______..__   __.      ___       __  ___  _______ ");
@@ -27,45 +27,46 @@ void areYouSure(){
 	gotoxy(q,p+12);printf("       \\______| /__/     \\__\\ |__|  |__| |_______|    ");  
 	
 	
-	// display smaller table
 	q = 8 ;
 	gotoxy(q,p+15);for ( i= 0 ; i <64 ; i++){
     printf("=");
 	}
 	printf("\n");
 	for ( j =0 ; j < 10 ; j++ ){
-	gotoxy(q,p+16);
-		for ( i= 0 ; i <64 ; i++){
-			if (i==0){
-				printf("%c",186);
-			}
-			else if (i == 63){
+		gotoxy(q,p+16);
+			for ( i= 0 ; i <64 ; i++){
+				if (i==0){
 					printf("%c",186);
+				}
+				else if (i == 63){
+						printf("%c",186);
+				}
+				else{
+					printf(" ");
+				}
 			}
-			else{
-				printf(" ");
-			}
-		}
-		p++;
+			p++;
 	}
 	
 	// display menu option
 	p= 26;
-	gotoxy(q,p);for ( i= 0 ; i <64 ; i++){
-    printf("=");
+	gotoxy(q,p);
+	
+	for ( i= 0 ; i <64 ; i++){
+    	printf("=");
 	}
 	q = 30;
 	p = 18;   
 	gotoxy(q,p);
-//    arrow(1,pos);
 	printf("Are you sure?\n");
     gotoxy(q,p+2);
-//    arrow(2,pos);
 	printf("\n");
     gotoxy(q,p+4);
-    arrow(1,pos);printf("No\n");
+    arrow(1,pos);
+	printf("No\n");
     gotoxy(q,p+6);
-    arrow(2,pos);printf("Yes\n");
+    arrow(2,pos);
+	printf("Yes\n");
         
                                                        
     kpress = getch();
@@ -93,7 +94,6 @@ void areYouSure(){
 		menu();
         break;
     case 2:
-//        system("cls"); 
         gotoxy(20, 30); printf("nice to see you here. press enter to exit");
         getch(), system("cls"), exit(0);
         break;

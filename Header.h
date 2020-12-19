@@ -31,7 +31,7 @@
 	
 	#define MAX_LEN 100
 	
-	// functions in Welcome.c
+	/*functions in Welcome.c*/
 	
 	void mainFunction();
 	void background();
@@ -41,7 +41,7 @@
 	void gotoxy(int x , int y);
 	void about();
 	
-	// functions in Start.c
+	/*functions in Start.c*/
 	
 	void gotoCoord(int x, int y);
 	void drawBorder(int state);
@@ -57,7 +57,7 @@
 	void checkCollision();
 	void spawnFood();
 	
-	// functions in Leaderboard.c
+	/*functions in Leaderboard.c*/
 	
 	void printLose();
 	void enterScore(int score);
@@ -66,7 +66,8 @@
 	void deleteLinkedList();
 	int checkLine();
 	
-	// functions in Exit.c
+	/*functions in Exit.c*/
+	
 	void areYouSure();
 	
 
