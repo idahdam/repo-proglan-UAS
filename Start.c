@@ -46,7 +46,7 @@ void drawBorder(int state){
 	
 	//SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN) ;
 	gotoCoord(food.posX, food.posY);
-	printf("%c", 221);
+	printf("%c", 233);
 	
 	if(state == 1){
 		gotoCoord(MAIN_BORDER_LEFT, MAIN_BORDER_TOP-1);
@@ -65,13 +65,11 @@ void startFunction(){
 void setStart(){
 	char keyPress;
     gotoCoord(0, 0);
-    background();
     drawBorder(0);
     keyPress = getch();
     system("cls");
     gotoCoord(0, 0);
     drawBorder(1);
-    background();
 	snakeHead.direction = keyPress;
 	lengthSnake = 15;
 	parts = 0;
@@ -93,7 +91,6 @@ void pauseEachMove(int value1, int value2){
 void moveSnake(){
 	int i, k;
 	char keyPress;
-	background();
 	do{
 		fflush(stdin);
         lengthStart=0;
@@ -105,7 +102,6 @@ void moveSnake(){
         }
         //system("cls");
         drawBorder(1);
-        background();
         spawnFood();
          
         if(snakeHead.direction == RIGHT) moveSnakeRight();

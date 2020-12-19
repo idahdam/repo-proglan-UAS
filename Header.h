@@ -11,10 +11,10 @@
 	#include <ctype.h>
 	#include <stdbool.h>
 	
-	#define YELLOW_BG "\x1B[48;2;176;184;63m"
-	#define GRAY_TEXT "\x1B[38;2;80;80;80m"
 	#define MAX_POS 4
     #define MIN_POS 1
+    #define MAX_POS_EXIT 2
+    #define MIN_POS_EXIT 1
     
     #define BARIS 25
 	#define KOLOM 25
@@ -39,6 +39,7 @@
 	void arrow(int ap, int rp);
 	void menu();
 	void gotoxy(int x , int y);
+	void about();
 	
 	// functions in Start.c
 	
@@ -64,6 +65,9 @@
 	void reArrange();
 	void deleteLinkedList();
 	int checkLine();
+	
+	// functions in Exit.c
+	void areYouSure();
 	
 
 #endif

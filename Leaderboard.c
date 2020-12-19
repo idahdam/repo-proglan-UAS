@@ -8,133 +8,102 @@ struct node{
 node *head = NULL, *tmp = NULL, *itr = NULL, *prev = NULL;
 int number, i, line = 0, toggle = 1;
 
+void quotebox(){
+    int x = 15 ;
+    int y = 17;
+    // print border
+    gotoxy(x,y);
+    int i,j;
+		for ( i= 0 ; i <50 ; i++){
+    printf("=");
+	}
+	printf("\n");y++;
+	for ( j =0 ; j < 7 ; j++ ){
+	gotoxy(x,y);
+		for ( i= 0 ; i <50 ; i++){
+			if (i==0){
+				printf("%c",186);
+			}
+		}
+		y++;
+	}
+		x = 64;
+		y = 18 ;
+	for ( j =0 ; j < 7 ; j++ ){
+	gotoxy(x,y);
+		for ( i= 0 ; i <50 ; i++){
+			if (i == 49){
+					printf("%c\n",186);
+			}
+		}
+		y++;
+	}
+	x = 15;
+	gotoxy(x,y);
+	for ( i= 0 ; i <50 ; i++){
+    printf("=");
+	}
+}
 
 void printLose(){
-    int n=0;
-    int a=0;
-    for(n=1 ; n <= 7 ; n++){
-    a= n ;
-    if (a == 1) {
-	    system("cls");
-	    system("COLOR 8C");
-	    printf("\n\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000         00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000          00000         000000        0000           00000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");
-	    Sleep(100);
+	system("cls");
+	int x,y;
+	int randcount;
+	x = 18;
+	y = 1 ;
+ 	gotoxy(x,y);printf("  ____    ____  ______    __    __  ");y++;    
+ 	gotoxy(x,y);printf("  \\   \\  /   / /  __  \\  |  |  |  | ");y++;     
+ 	gotoxy(x,y);printf("   \\   \\/   / |  |  |  | |  |  |  | ");y++;      
+ 	gotoxy(x,y);printf("    \\_    _/  |  |  |  | |  |  |  | ");y++;      
+ 	gotoxy(x,y);printf("      |  |    |  `--'  | |  `--'  | ");y++;      
+ 	gotoxy(x,y);printf("      |__|     \\______/   \\______/  ");y+=2;      
+                                          
+	gotoxy(x,y);printf(" __        ______        _______. _______ ");y++; 
+	gotoxy(x,y);printf("|  |      /  __  \\      /       ||   ____|");y++; 
+	gotoxy(x,y);printf("|  |     |  |  |  |    |   (----`|  |__   ");y++; 
+	gotoxy(x,y);printf("|  |     |  |  |  |     \\   \\    |   __|  ");y++; 
+	gotoxy(x,y);printf("|  `----.|  `--'  | .----)   |   |  |____ ");y++; 
+	gotoxy(x,y);printf("|_______| \\______/  |_______/    |_______|");y++; 
+	x = 24;
+	y = 19;
+	gotoxy(x,y);printf("    message from developer :");y+=2;
+	
+    srand( time( NULL ) ); //seed random-number generator //
+    randcount = rand()%5;
+    x = 23;
+	if (randcount == 1){
+	gotoxy(x,y);printf("- thats okay you can try again -");y+=2;
 	}
-    if (a == 2) {
-		system("cls");
-		system("COLOR 8C");
-		printf("\n\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-		printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");
-		Sleep(100);
+	else if (randcount == 2){
+	gotoxy(x,y);printf("- keep trying and you will succeed -");y+=2;
 	}
-    if (a == 3) {
-	    system("cls");
-	    system("COLOR 8C");
-	    printf("\n\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000         00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000          00000         000000        0000           00000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");
-	    Sleep(100);
+	else if (randcount == 3){
+	gotoxy(x,y);printf("- smile :) you already try your best -");y+=2;
 	}
-    if (a == 4) {
-	    system("cls");
-	    system("COLOR 8C");
-	    printf("\n\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");
-	    Sleep(100);
+	else if (randcount == 4){
+	gotoxy(x,y);printf("  - thats all you've got? -");y+=2;
 	}
-    if (a == 5) {
-	    system("cls");
-	    system("COLOR 8C");
-	    printf("\n\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000         00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000          00000         000000        0000           00000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");
-	    Sleep(100);
-		}
-    if (a == 6) {
-	    system("cls");
-	    system("COLOR 84");
-	    printf("\n\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");
-	    Sleep(100);
+	else if (randcount == 0){
+	gotoxy(x,y);printf(" -not that good but not bad -");y+=2;
 	}
-    if (a == 7) {
-	    system("cls");
-	    system("COLOR 8C");
-	    printf("\n\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000         00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000  00000000000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  00000         0000           00000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000   000000000000  00000  000000000000  0000  00000000000000000000\n");printf("\t\t\t");
-	    printf("00000000000          00000         000000        0000           00000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");printf("\t\t\t");
-	    printf("000000000000000000000000000000000000000000000000000000000000000000000000000\n");
-	    Sleep(2000);
-	    system("cls");
-	    }
-    }
+	
+	x = 26;
+	gotoxy(x,y);printf("press any key to continue");
+	
+	x = 20;
+    y = 28;
+	gotoxy(x,y);printf("   _________         _________");y++;
+	gotoxy(x,y);printf("  /         \\       /         \\");y++;
+	gotoxy(x,y);printf(" /  /~~~~~\\  \\     /  /~~~~~\\  \\");y++;
+	gotoxy(x,y);printf(" |  |     |  |     |  |     |  |         /");y++;
+	gotoxy(x,y);printf(" |  |     |  |     |  |     |  |       //");y++;
+	gotoxy(x,y);printf("(x  x)    \\  \\_____/  /     \\  \\_____/ /");y++;
+	gotoxy(x,y);printf(" \\__/      \\         /       \\        /");y++;
+	gotoxy(x,y);printf("   |         ~~~~~~~~~         ~~~~~~~~");y++;
+	gotoxy(x,y);printf("   ^");y++;
+    quotebox();
+    background();
+    getch();
 }
 
 void sort(){
@@ -160,27 +129,22 @@ void sort(){
     while(fgets(strTempData, MAX_LEN, ptrFileLog) != NULL) {
         // Remove the trailing newline character
         if(strchr(strTempData,'\n'))
-        strTempData[strlen(strTempData)-1] = '\0';
+            strTempData[strlen(strTempData)-1] = '\0';
         strData = (char**)realloc(strData, sizeof(char**)*(noOfLines+1));
         strData[noOfLines] = (char*)calloc(MAX_LEN,sizeof(char));
         strcpy(strData[noOfLines], strTempData);
-        printf("%s", strData[noOfLines]);
         noOfLines++;
     }
-    
     // Sort the array.
     for(i= 0; i < (noOfLines - 1); ++i) {
         for(j = 0; j < ( noOfLines - i - 1); ++j) {
-//            if(strncmp(strData[j], strData[j+1], 5) < 0) {
-		      if(atoi(strData[j]) < atoi(strData[j+1])){
-//			  if(strData[j] < strData[j+1]){
+            if(atoi(strData[j])< atoi(strData[j+1])){
                 strcpy(strTempData, strData[j]);
                 strcpy(strData[j], strData[j+1]);
                 strcpy(strData[j+1], strTempData);
             }
         }
     }
-    
     // Write it to outfile. file.
     for(i = 0; i < noOfLines; i++)
         fprintf(ptrSummary,"%s\n",strData[i]);
@@ -194,22 +158,20 @@ void sort(){
 }
 
 void enterScore(int score){
-	int zero = 0;
+	int x,y;
 	toggle = 0;
     FILE *fp, *fp2;
     char nama[3];
     system("cls");
-    system("COLOR 8f");
     fp = fopen("leaderboard.txt", "a");
     fp2 = fopen("leaderboard_out.txt", "a");
-    printf("\t\t\t");
-    printf("=====================================================\n");
-    printf("\n\t\t\tMasukkan 3 huruf inisialmu: ");
-    scanf("%3s", &nama);
-
-    fprintf(fp, "%d \t %s\n", score, nama);
-
- 		
+	background();
+	x = 18;
+	y = 3;
+    gotoxy(x,y);printf("\n\t\t\tMasukkan 3 huruf inisialmu: ");y+=3;
+    x = 35;
+    gotoxy(x,y);scanf("%3s", &nama);
+ 	fprintf(fp, "%d \t %s\n", score, nama);
 	fclose(fp);
 	fclose(fp2);
 	toggle = 1;
@@ -226,22 +188,59 @@ void showScore(){
     if (fp == NULL){
         // printf("Could not open file %s", filename);
         // return 1;
-    	printf("\t\t\t========================================\n");
-    	printf("\t\t\t\t\tScoreBoard\t\t\n\n");
-    	printf("\t\t\t========================================\n");
+	int p=1;
+	int q = 12;
+	int i ;
+	gotoxy(q,p);printf("      __    __   __    _______  __    __  ");p++;         
+    gotoxy(q,p);printf("     |  |  |  | |  |  /  _____||  |  |  | ");p++;        
+    gotoxy(q,p);printf("     |  |__|  | |  | |  |  __  |  |__|  |  ");p++;        
+    gotoxy(q,p);printf("     |   __   | |  | |  | |_ | |   __   | ");p++;         
+    gotoxy(q,p);printf("     |  |  |  | |  | |  |__| | |  |  |  | ");p++;         
+    gotoxy(q,p);printf("     |__|  |__| |__|  \\______| |__|  |__|  ");p++;        
+                                                       
+	gotoxy(q,p);printf("     _______.  ______   ______   .______       _______ ");p++;
+	gotoxy(q,p);printf("    /       | /      | /  __  \\  |   _  \\     |   ____|");p++;
+	gotoxy(q,p);printf("   |   (----`|  ,----'|  |  |  | |  |_)  |    |  |__   ");p++;
+	gotoxy(q,p);printf("    \\   \\    |  |     |  |  |  | |      /     |   __|  ");p++;
+	gotoxy(q,p);printf(".----)   |   |  `----.|  `--'  | |  |\\  \\----.|  |____ ");p++;
+	gotoxy(q,p);printf("|_______/     \\______| \\______/  | _| `._____||_______|\n\n");
+    for ( i= 0 ; i <80 ; i++){
+    printf("=");
+	}
+	printf("\n\n");
         printf("\t\t\tScoreboard is empty.\n");
     }
     
     else{
-    	printf("\t\t\t========================================\n");
-    	printf("\t\t\t\t\tScoreBoard\t\t\n\n");
-    	printf("\t\t\t========================================\n");
-    	printf("\t\t\t--Best\t Name \t Score--\n\n");
-		printf("\t\t\t========================================\n");
+    int p=1;
+	int q = 12;
+	int i ;
+	gotoxy(q,p);printf("      __    __   __    _______  __    __  ");p++;         
+    gotoxy(q,p);printf("     |  |  |  | |  |  /  _____||  |  |  | ");p++;        
+    gotoxy(q,p);printf("     |  |__|  | |  | |  |  __  |  |__|  |  ");p++;        
+    gotoxy(q,p);printf("     |   __   | |  | |  | |_ | |   __   | ");p++;         
+    gotoxy(q,p);printf("     |  |  |  | |  | |  |__| | |  |  |  | ");p++;         
+    gotoxy(q,p);printf("     |__|  |__| |__|  \\______| |__|  |__|  ");p++;        
+                                                       
+	gotoxy(q,p);printf("     _______.  ______   ______   .______       _______ ");p++;
+	gotoxy(q,p);printf("    /       | /      | /  __  \\  |   _  \\     |   ____|");p++;
+	gotoxy(q,p);printf("   |   (----`|  ,----'|  |  |  | |  |_)  |    |  |__   ");p++;
+	gotoxy(q,p);printf("    \\   \\    |  |     |  |  |  | |      /     |   __|  ");p++;
+	gotoxy(q,p);printf(".----)   |   |  `----.|  `--'  | |  |\\  \\----.|  |____ ");p++;
+	gotoxy(q,p);printf("|_______/     \\______| \\______/  | _| `._____||_______|\n\n");
+    for ( i= 0 ; i <80 ; i++){
+    printf("=");
+	}
+	printf("\n\n");
+    	printf("    \t\t\t--Best\t Name \t Score--\n\n");
+	for ( i= 0 ; i <80 ; i++){
+    printf("=");
+	}
+	printf("\n");
 		
-//		line = checkLine();
+		line = checkLine();
 		
-		for(number = 1; number<=10; number++){
+		for(number = 1; number<=line; number++){
 			
 			fgets(str, MAXCHAR, fp);
 				
@@ -252,7 +251,7 @@ void showScore(){
 			if(number == 1){
 				
 				head = tmp;	
-				printf("\t\t\t--%d \t %s\n", number, head->data);
+				printf("\n    \t\t\t--%d \t %s\n", number, head->data);
 							
 			}
 			
@@ -278,22 +277,23 @@ void showScore(){
 
 
     fclose(fp);
-	printf("\n\n\t\t\tEnter to go to main.");
+	printf("\n\n\t\t\tpress Enter to go to main.");
+	background();
 	line == 0;
     getch();
     menu();
 }
 
-//int checkLine(){
-// 		int trueLine = 0;
-//		FILE* fp = fopen("leaderboard_out.txt", "r");
-//		char str[MAXCHAR];
-//		while (fgets(str, MAXCHAR, fp) != NULL){
-//	        trueLine++;
-//	        if(line == 11){
-//	        	break;
-//			}
-//		}
-//		
-//		return trueLine;
-//}
+int checkLine(){
+ 		int trueLine = 0;
+		FILE* fp = fopen("leaderboard_out.txt", "r");
+		char str[MAXCHAR];
+		while (fgets(str, MAXCHAR, fp) != NULL){
+	        trueLine++;
+	        if(line == 11){
+	        	break;
+			}
+		}
+		
+		return trueLine;
+}
