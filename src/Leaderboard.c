@@ -162,11 +162,15 @@ void sort(){
         for(j = 0; j < ( noOfLines - i - 1); ++j) {
         	/*checking if the first number is lower*/
         	//sorting algorithm
-            if(atoi(strData[j])< atoi(strData[j+1])){
+            if(atoi(strData[j]) < atoi(strData[j+1])){
                 strcpy(strTempData, strData[j]);
                 strcpy(strData[j], strData[j+1]);
                 strcpy(strData[j+1], strTempData);
             }
+            /*BUG FIXES*/
+            else{
+				continue;
+			}
         }
     }
     
@@ -288,10 +292,9 @@ void showScore(){
 				
 				head = tmp;	
 				printf("\n    \t\t\t--%d \t %s\n", number, head->data);
-							
 			}
 			
-			else if(number <= line){
+			else if(number <= line && number != 1){
 				
 				itr = head;
 				

@@ -53,7 +53,7 @@ void background(){
     	printf("=");
 	}
 	/*footer*/
-	gotoxy(30,38);
+	gotoxy(30,39);
     printf("copyright hadi & jo\n");
 }
 

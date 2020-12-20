@@ -71,9 +71,6 @@ void about(){
 	gotoxy(q,p);printf("  ^");p++;
     
 	
-	/*footer*/                                 
-    gotoxy(32,38);
-    printf("copyright hadi & jo\n");
     getch();
     menu();
 }

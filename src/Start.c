@@ -23,7 +23,8 @@ Snake snakeHead, snakeBody[150], turn[400];
 Food food;
 
 /*change length of the snake on start() method, not here.*/
-int lengthSnake = 5, lengthStart = 0, foodCounter = 0, gameLoop = true, parts = 0, a, b;
+int lengthSnake = 15, lengthStart = 0, foodCounter = 0, gameLoop = true, parts = 0, a, b;
+char keyPress;
 
 COORD setCoordSnake={};
 
@@ -111,7 +112,6 @@ void pauseEachMove(int value1, int value2){
 /*fungsi mengecek pergerakan ular*/
 void moveSnake(){
 	int i, k;
-	char keyPress;
 	
 	/*keep moving until user press arrow key*/
 	do{
@@ -142,6 +142,7 @@ void moveSnake(){
 	
 	/*user input*/
 	keyPress = getch();
+	checkCollision();
 	
 	/*checking user input to match the direction*/
 	if(keyPress==RIGHT&&snakeHead.direction!=RIGHT&&snakeHead.direction!=LEFT||keyPress==LEFT&&snakeHead.direction!=RIGHT&&snakeHead.direction!=LEFT || keyPress==UP&&snakeHead.direction!=UP&&snakeHead.direction!=DOWN || keyPress==DOWN&&snakeHead.direction!=UP&&snakeHead.direction!=DOWN){
@@ -398,13 +399,29 @@ void ableToTurn(){
 void checkCollision(){
 	int i;
 	/*if the snake hits itself*/
-	for(i = 3; i<=lengthSnake; i++){
+	for(i = 1; i<lengthSnake; i++){
 		if(snakeHead.posX == snakeBody[i].posX && snakeHead.posY == snakeBody[i].posY){
 			pauseEachMove(100000000, 100000000);
 			printLose();
 			enterScore(foodCounter-1);
-			menu();
-			
+			menu();		
+		}
+		
+		/*BUG FIXES*/
+		else if(snakeHead.posX == snakeBody[i].posX+1 && snakeHead.posY == snakeBody[i].posY && keyPress == LEFT|| snakeHead.posX == snakeBody[i].posX-1 && snakeHead.posY == snakeBody[i].posY  && keyPress == RIGHT){
+			pauseEachMove(100000000, 100000000);
+			printLose();
+			enterScore(foodCounter-1);
+			menu();	
+		}
+		else if(snakeHead.posX == snakeBody[i].posX && snakeHead.posY == snakeBody[i].posY+1 && keyPress == UP|| snakeHead.posX == snakeBody[i].posX && snakeHead.posY == snakeBody[i].posY-1  && keyPress == DOWN){
+			pauseEachMove(100000000, 100000000);
+			printLose();
+			enterScore(foodCounter-1);
+			menu();	
+		}
+		else{
+			continue;
 		}
 	}
 	
