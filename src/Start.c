@@ -79,7 +79,7 @@ void startFunction(){
 
 /*Men-set state awal object*/
 void setStart(){
-	char keyPress;
+	keyPress = NULL;
     gotoCoord(0, 0);
     drawBorder(0);
     keyPress = getch();

@@ -220,14 +220,16 @@ void enterScore(int score){
 /*Show scoreboard*/
 void showScore(){
 	sort();
-    FILE *fp;
+    FILE *fp, *fp2;
     char str[MAXCHAR];
     char filename[] = "leaderboard_out.txt";
+    char filenameSource[] = "leaderboard.txt"; 
     system("cls");
 	number = 1;
 	//reading file
     fp = fopen(filename, "r");
-    if (fp == NULL){
+    fp2 = fopen(filenameSource, "r");
+    if (fp2 == NULL){
 		int p=1;
 		int q = 12;
 		int i ;
@@ -316,6 +318,7 @@ void showScore(){
 
 	/*closing the file after using it*/
     fclose(fp);
+    fclose(fp2);
 	printf("\n\n\t\t\tpress Enter to go to main.");
 	background();
 	line == 0;
