@@ -8,4 +8,5 @@ How to compile:
 Powerpoint presentation is included in the ZIP file.
 
 Online repository: https://github.com/idahdam/snake-game
+
 Project page: https://idahdam.github.io/snake-game/
