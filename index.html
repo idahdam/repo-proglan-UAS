@@ -9,46 +9,36 @@
     <title>Snake Game 1.0.0</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="center">Snake Game</h1>
+        <h1 class="center">🐍Snake Game🐍</h1>
         <h5 class="center">
-            Situs ini dibuat untuk penjelasan tentang snake.
+            Situs ini dibuat untuk penjelasan tentang Snake Game in C.
         </h5>
         <br>
-        <hr>
-        <div class="center space">
-            <a class="hyperlink" href="#intro">Intro</a>
-            <a class="hyperlink" href="#penjelasan">Penjelasan</a>
-            <a class="hyperlink" href="#photos">Photos</a>
+        <div class="tab container">
+            <button class="tablinks" onclick="openCity(event, 'Intro')" id="defaultOpen">Intro</button>
+            <script>
+                document.getElementById("defaultOpen").click();
+            </script>
+            <button class="tablinks" onclick="openCity(event, 'Penjelasan')">Penjelasan</button>
+            <button class="tablinks" onclick="openCity(event, 'Photos')">Photos</button>
+            <button class="tablinks" onclick="openCity(event, 'Link')">Link</button>
         </div>
-        <hr>       
-
-        <p>
-            Pada proyek akhir kali ini, kami membuat proyek dengan bahasa C. Dikarenakan waktu sendiri, 
-            kami memutuskan untuk tidak menggunakan graphics library, melainkan menggunakan console.
-        </p>
-        <img alt="gambar satu" src="none">  
-        <div class="" id="intro">
-            
-            <ul>
-                <li><h3 class="section-right"><i class="small material-icons">adjust</i> Intro</h3></li>
-            </ul>
-            <hr>
+        
+        <!-- Tab content -->
+        <div id="Intro" class="tabcontent container">
+            <!-- <h3>Intro</h3> -->
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Pada proyek akhir kali ini, kami membuat proyek dengan bahasa C. Dikarenakan waktu sendiri, 
+                kami memutuskan untuk tidak menggunakan graphics library, melainkan menggunakan console.
             </p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Proyek ini dibuat untuk memenuhi 'kewajiban' proyek akhir UAS pemrograman lanjut.
             </p>
         </div>
-
-        <br>
-        <div id="penjelasan">
-            <ul>
-                <li><h3 class="section-left"><i class="small material-icons">adjust</i> Penjelasan</h3></li>
-            </ul>
-            <hr>
-            <p>
+        
+        <div id="Penjelasan" class="tabcontent container">
+            <!-- <h3>Paris</h3> -->
+            <!-- <p>
                 <pre>
                     
                     var foo = "bar";
@@ -56,37 +46,58 @@
                     console.log(foo);
                     console.log(hello);
                 </pre>
-            </p>
+            </p> -->
 
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                (Mager ntar dulu dah ngisinya)
             </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+        </div>
+        
+        <div id="Photos" class="tabcontent container">
+            <!-- <h3>Tokyo</h3> -->
+            <img src="/img/Picture3.png" alt="ur mom"/>
+            <img src="/img/Picture1.png" width="800" alt="is"/>
+            <img src="/img/Picture2.png" width="800" alt="my favorite dish"/>
+
         </div>
 
-        <br>
-        <div class="" id="photos">
-            <ul>
-                <li><h3 class="section-right"><i class="small material-icons">adjust</i> Photos</h3></li>
-            </ul>
-            <hr>
+        <div id="Link" class="tabcontent container">
+            <!-- <h3></h3> -->
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Pastikan menggunakan Dev-C++ biar gak ribet. <a href="https://github.com/idahdam/snake-game/">Klik di sini.</a>
             </p>
         </div>
+        
 
     </div>
+    <script>
+        function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
 
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+        document.getElementById("defaultOpen").click();
+    </script>
     <br>
     <footer>
         <div>
             <p class="center">
-                all rights reserved.
+                ✨𝓽𝓱𝓲𝓼 𝓯𝓸𝓷𝓽 𝓲𝓼 𝓬𝓸𝓸𝓵✨
             </p>
         </div>
     </footer>
